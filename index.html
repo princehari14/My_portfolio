@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harishankar Mandal · Portfolio</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0b0b12;
+      --bg-secondary: #13131f;
+      --bg-card: #1a1a2e;
+      --bg-card-hover: #22223a;
+      --text-primary: #edf0f7;
+      --text-secondary: #b0b8d0;
+      --text-muted: #6e7690;
+      --accent: #7c6df0;
+      --accent-light: #a08cff;
+      --accent-gradient: linear-gradient(135deg, #7c6df0, #5b7cf7);
+      --border-color: #2a2a42;
+      --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+      --radius: 2rem;
+      --radius-sm: 1.2rem;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 10px;
+    }
+
+    /* ===== CONTAINER ===== */
+    .app {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1.5rem 1.8rem 2rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2.2rem;
+      position: sticky;
+      top: 0;
+      background: rgba(11, 11, 18, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      padding: 0.8rem 0 1.2rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.6rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      padding: 0.3rem 0;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-gradient);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-links .social-link {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      padding: 0;
+    }
+    .nav-links .social-link:hover {
+      color: var(--accent-light);
+      transform: scale(1.1);
+    }
+    .nav-links .social-link::after {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.3rem;
+    }
+    .hamburger span {
+      width: 26px;
+      height: 2.5px;
+      background: var(--text-primary);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+    .section-title i {
+      color: var(--accent);
+      font-size: 1.5rem;
+      width: 2.2rem;
+      text-align: center;
+    }
+    .section-title .line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+      margin-left: 0.5rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      background: var(--bg-secondary);
+      padding: 2.8rem 3rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 109, 240, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content {
+      flex: 2;
+      min-width: 260px;
+      z-index: 1;
+    }
+    .hero-content .badge-hero {
+      display: inline-block;
+      background: rgba(124, 109, 240, 0.15);
+      color: var(--accent-light);
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(124, 109, 240, 0.2);
+    }
+    .hero-content h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 0.4rem;
+    }
+    .hero-content h1 span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-content .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+    .hero-content .subtitle strong {
+      color: var(--text-primary);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      background: transparent;
+      color: var(--text-primary);
+    }
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(124, 109, 240, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(124, 109, 240, 0.5);
+    }
+    .btn-outline {
+      border: 1.5px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--text-primary);
+      background: rgba(124, 109, 240, 0.06);
+    }
+    .btn-small {
+      padding: 0.4rem 1.2rem;
+      font-size: 0.8rem;
+    }
+    .btn-success {
+      background: #22c55e;
+      color: #fff;
+    }
+    .btn-success:hover {
+      background: #16a34a;
+      transform: translateY(-2px);
+    }
+    .hero-visual img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 8px 30px rgba(124, 109, 240, 0.3);
+    }
+    @media (max-width: 600px) {
+      .hero-visual img {
+        width: 130px;
+        height: 130px;
+      }
+    }
+
+    /* ===== CARDS GRID ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.6rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      padding: 1.6rem 1.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: #3a3a5a;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: var(--text-primary);
+    }
+    .card .sub {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 0.7rem;
+    }
+    .card .desc {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .card ul li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+    }
+    .card ul li i {
+      color: var(--accent);
+      font-size: 0.4rem;
+      margin-top: 0.55rem;
+      min-width: 12px;
+    }
+    .card .highlight {
+      color: var(--accent-light);
+      font-weight: 600;
+    }
+    .card .badge-sm {
+      display: inline-block;
+      background: rgba(124, 109, 240, 0.12);
+      color: var(--accent-light);
+      font-size: 0.7rem;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      margin-top: 0.4rem;
+      border: 1px solid rgba(124, 109, 240, 0.15);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    /* ===== SKILLS TAGS ===== */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.9rem;
+      background: var(--bg-secondary);
+      padding: 1.8rem 2rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+    .skill-tag {
+      background: var(--bg-card);
+      padding: 0.35rem 1.3rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+      transform: scale(1.04);
+    }
+    .skill-tag i {
+      margin-right: 0.4rem;
+      color: var(--accent);
+    }
+    .skill-category {
+      width: 100%;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .skill-category:first-of-type {
+      margin-top: 0;
+    }
+
+    /* ===== PROJECTS ===== */
+    .project-card {
+      background: var(--bg-card);
+      padding: 1.8rem 2rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      position: relative;
+    }
+    .project-card:hover {
+      background: var(--bg-card-hover);
+      border-color: #3a3a5a;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .project-card .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.7rem;
+      margin: 0.7rem 0 0.2rem;
+    }
+    .project-card .tech-tags span {
+      background: rgba(124, 109, 240, 0.1);
+      padding: 0.1rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      color: var(--accent-light);
+      border: 1px solid rgba(124, 109, 240, 0.12);
+    }
+    .project-card .proj-icon {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .project-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .project-card .desc {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-secondary);
+      padding: 1.4rem 2.2rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      margin-top: 1rem;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+    .contact-info i {
+      color: var(--accent);
+      width: 1.3rem;
+      margin-right: 0.3rem;
+    }
+    .contact-info a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .contact-info a:hover {
+      color: var(--text-primary);
+    }
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+    }
+    .social-links a {
+      transition: var(--transition);
+    }
+    .social-links a:hover {
+      color: var(--accent-light);
+      transform: scale(1.15);
+    }
+
+    /* ===== RESUME / CERTIFICATE VIEWER ===== */
+    .pdf-viewer {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .pdf-viewer iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      background: #fff;
+    }
+    .pdf-viewer .pdf-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .pdf-viewer .pdf-toolbar span {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* PPT Preview area */
+    .ppt-preview {
+      display: none;
+      margin-top: 1rem;
+      padding: 2rem 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+    .ppt-preview i {
+      font-size: 3.5rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .ppt-preview p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Upload box */
+    .upload-box {
+      margin-top: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+    .upload-box label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .upload-box input[type="file"] {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 0.4rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      font-size: 0.85rem;
+    }
+    .upload-box input[type="file"]::file-selector-button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 0.8rem;
+      transition: var(--transition);
+    }
+    .upload-box input[type="file"]::file-selector-button:hover {
+      background: #5b4ac0;
+      transform: scale(1.02);
+    }
+    .upload-status {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 0.5rem;
+    }
+    .upload-status.success {
+      color: #22c55e;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 820px) {
+      .app {
+        padding: 1rem 1.2rem;
+      }
+      .hero {
+        padding: 2rem 1.8rem;
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+      .hero-content .subtitle {
+        margin: 0 auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .navbar {
+        flex-wrap: nowrap;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--bg-secondary);
+        padding: 1.2rem 0;
+        border-radius: var(--radius-sm);
+        margin-top: 0.6rem;
+        border: 1px solid var(--border-color);
+        gap: 0.8rem;
+        align-items: center;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .skills-container {
+        padding: 1.2rem 1.2rem;
+      }
+      .pdf-viewer iframe {
+        height: 300px;
+      }
+      .upload-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 1.5rem 1.2rem;
+      }
+      .contact-info {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+        flex-direction: column;
+      }
+      .pdf-viewer iframe {
+        height: 200px;
+      }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate {
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app" id="app">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <div class="logo">Harishankar Mandal</div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="social-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </nav>
+
+    <!-- ===== HOME / HERO ===== -->
+    <section id="home" class="animate">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="badge-hero"><i class="fas fa-rocket" style="margin-right:6px;"></i> Open to opportunities</div>
+          <h1>Hi, I'm <span>Harishankar Mandal</span></h1>
+          <p class="subtitle">
+            <strong>B.Tech CSE</strong> student with a strong foundation in web development &amp; machine learning.
+            Passionate about building efficient software solutions and eager to contribute as an entry‑level developer.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+            <a href="#resume" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Resume</a>
+            
+          </div>
+        </div>
+        <img src="profile.jpeg" alt="Harishankar Mandal" 
+     style="width: 220px; height: 220px; border-radius: 50%; 
+            object-fit: cover; 
+            object-position: top center; 
+            border: 3px solid var(--accent); 
+            box-shadow: 0 8px 30px rgba(124,109,240,0.3);"> 
+        
+  
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education" class="animate delay-1">
+      <div class="section-title">
+        <i class="fas fa-graduation-cap"></i> Education
+        <span class="line"></span>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>B.Tech (CSE)</h3>
+          <div class="sub">JUT GEC PALAMU · 2022 – 2026</div>
+          <div class="desc"><span class="highlight">Appearing</span> · CGPA: 7.61</div>
+        </div>
+        <div class="card">
+          <h3>Senior Secondary (XII)</h3>
+          <div class="sub">CBSE · JNV GIRIDIH · 2021</div>
+          <div class="desc"><span class="highlight">81.6%</span></div>
+        </div>
+        <div class="card">
+          <h3>Secondary School (X)</h3>
+          <div class="sub">CBSE · JNV JAMTARA · 2019</div>
+          <div class="desc"><span class="highlight">91.6%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="animate delay-2">
+      <div class="section-title">
+        <i class="fas fa-cogs"></i> Skills
+        <span class="line"></span>
+      </div>
+      <div class="skills-container">
+        <div class="skill-category"><i class="fas fa-code" style="margin-right:8px;color:var(--accent);"></i> Programming Languages</div>
+        <span class="skill-tag"><i class="fab fa-cuttlefish"></i> C</span>
+        <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+        <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+
+        <div class="skill-category"><i class="fas fa-globe" style="margin-right:8px;color:var(--accent);"></i> Web Development</div>
+        <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+        <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+        <span class="skill-tag"><i class="fab fa-node"></i> Node.js</span>
+        <span class="skill-tag"><i class="fab fa-react"></i> React.js</span>
+        <span class="skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+        <span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
+
+        <div class="skill-category"><i class="fas fa-brain" style="margin-right:8px;color:var(--accent);"></i> Core Subjects</div>
+        <span class="skill-tag">Computer Network</span>
+        <span class="skill-tag">Digital Logic</span>
+        <span class="skill-tag">AI &amp; ML</span>
+        <span class="skill-tag">Data Science</span>
+        <span class="skill-tag">OS</span>
+        <span class="skill-tag">DBMS</span>
+        <span class="skill-tag">Cloud Computing</span>
+        <span class="skill-tag">Cyber Security</span>
+        <span class="skill-tag">Software Engineering</span>
+        <span class="skill-tag">DSA</span>
+        <span class="skill-tag">TOC</span>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS (with PPT upload per project) ===== -->
+    <section id="projects" class="animate delay-2">
+      <div class="section-title">
+        <i class="fas fa-project-diagram"></i> Projects
+        <span class="line"></span>
+      </div>
+      <div class="grid-2">
+        <!-- Project 1 -->
+        <div class="project-card" id="project1">
+          <div class="proj-icon"><i class="fas fa-envelope"></i></div>
+          <h3>Email Spam Classifier</h3>
+          <div class="desc">
+            Built a machine learning model using <strong>SVM</strong> to classify emails as spam or ham,
+            achieving high accuracy. Preprocessed text with TF‑IDF.
+          </div>
+          <div class="tech-tags">
+            <span>Python</span><span>Scikit-learn</span><span>SVM</span><span>Pandas</span>
+          </div>
+          <div class="btn-group">
+            <a href="email-spam-report.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Report</a>
+            <a href="https://github.com/yourusername/email-spam-classifier" target="_blank" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
+            <a href="email-spam PPT.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> PPT</a> 
+          </div>
+          <!-- PPT Upload for this project -->
+          <div class="upload-box" style="margin-top:0.8rem;padding:0.6rem 1rem;">
+            <label><i class="fas fa-file-powerpoint" style="color:var(--accent);"></i> Upload PPT:</label>
+            <input type="file" accept=".ppt,.pptx" id="pptUpload1" onchange="uploadProjectPPT(1)" />
+            <span class="upload-status" id="pptStatus1">No PPT uploaded</span>
+          </div>
+          <div id="pptPreview1" class="ppt-preview">
+            <i class="fas fa-file-powerpoint"></i>
+            <p style="color:var(--text-secondary);margin-bottom:0.6rem;">PPT uploaded! Click to download.</p>
+            <a id="pptDownload1" href="#" download class="btn btn-success btn-small"><i class="fas fa-download"></i> Download PPT</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" id="project2">
+          <div class="proj-icon"><i class="fas fa-utensils"></i></div>
+          <h3>Recipe Recognizer</h3>
+          <div class="desc">
+            Computer vision &amp; ML system that identifies ingredients from images and suggests recipes.
+            Used CNN with TensorFlow &amp; OpenCV.
+          </div>
+          <div class="tech-tags">
+            <span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>Flask</span>
+          </div>
+          <div class="btn-group">
+            <a href="recipe-recognizer-report.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Report</a>
+            <a href="https://github.com/yourusername/recipe-recognizer" target="_blank" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
+            <a href="recipe-recognizer PPT.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> PPT</a>  
+          </div>
+          <!-- PPT Upload for this project -->
+          <div class="upload-box" style="margin-top:0.8rem;padding:0.6rem 1rem;">
+            <label><i class="fas fa-file-powerpoint" style="color:var(--accent);"></i> Upload PPT:</label>
+            <input type="file" accept=".ppt,.pptx" id="pptUpload2" onchange="uploadProjectPPT(2)" />
+            <span class="upload-status" id="pptStatus2">No PPT uploaded</span>
+          </div>
+          <div id="pptPreview2" class="ppt-preview">
+            <i class="fas fa-file-powerpoint"></i>
+            <p style="color:var(--text-secondary);margin-bottom:0.6rem;">PPT uploaded! Click to download.</p>
+            <a id="pptDownload2" href="#" download class="btn btn-success btn-small"><i class="fas fa-download"></i> Download PPT</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="animate delay-3">
+      <div class="section-title">
+        <i class="fas fa-briefcase"></i> Experience
+        <span class="line"></span>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Web Development Intern</h3>
+          <div class="sub">Shineskill Software Pvt. Ltd. · 1 Month</div>
+          <ul>
+            <li><i class="fas fa-circle"></i> Built responsive web interfaces using <strong>HTML5, CSS3, Bootstrap</strong></li>
+            <li><i class="fas fa-circle"></i> Developed dynamic features with <strong>PHP &amp; MySQL</strong></li>
+            <li><i class="fas fa-circle"></i> Collaborated on full‑stack web applications</li>
+          </ul>
+          <div class="btn-group" style="margin-top:0.8rem;">
+            <a href="certificate-internship.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Data Science Intern</h3>
+          <div class="sub">Shineskill Software Pvt. Ltd. · 2 Months</div>
+          <ul>
+            <li><i class="fas fa-circle"></i> Worked on data cleaning, analysis, and visualization</li>
+            <li><i class="fas fa-circle"></i> Built predictive models using <strong>Python</strong> libraries</li>
+            <li><i class="fas fa-circle"></i> Gained hands‑on experience in ML workflows</li>
+          </ul>
+          <div class="btn-group" style="margin-top:0.8rem;">
+            <a href="certificate-datascience.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Co-curricular & Awards -->
+      <div style="margin-top:2rem;">
+        <div style="display:flex;flex-wrap:wrap;gap:1.6rem;background:var(--bg-secondary);padding:1.8rem 2rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">
+          <div style="flex:1;min-width:180px;">
+            <h4 style="color:var(--text-primary);margin-bottom:0.3rem;"><i class="fas fa-star" style="color:var(--accent);margin-right:8px;"></i> Awards</h4>
+            <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:1.8;">
+              <li>🏅 Rajya Puraskar – Bharat Scouts &amp; Guides</li> 
+              <a href="Rajya.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a> </li> 
+              <li>🏅 Pre‑Rashtrapati Puraskar – Scouts</li> 
+              <a href="Pre‑Rashtrapati.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a> </li> 
+              <li>🎨 Saksham National Painting Competition 2018</li> 
+              <a href="Painting.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a> </li> 
+            </ul>
+          </div>
+          <div style="flex:1;min-width:180px;">
+            <h4 style="color:var(--text-primary);margin-bottom:0.3rem;"><i class="fas fa-music" style="color:var(--accent);margin-right:8px;"></i> Co‑curricular</h4>
+            <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:1.8;">
+              <li>🎵 Guitar &amp; Casio&amp;  Dance </li>
+              <a href="Talent-Certificates.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a> </li>
+              <li>🎨 Painting competitions</li> 
+              <a href="Painting.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a> </li>  
+              <li>🏕️ Bharat Scouts &amp; Guides</li> 
+              <a href="Bharat-scout-guide.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a></li>   
+              <li>👨‍🏫 President – NSS (College)</li> 
+              <a href="NSS-Certificates.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a> </li>  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESUME with UPLOAD (update without code change) ===== -->
+    <section id="resume" class="animate delay-3">
+      <div class="section-title">
+        <i class="fas fa-file-pdf"></i> Resume &amp; Certificates
+        <span class="line"></span>
+      </div>
+        
+      <!-- PDF Viewer 
+      <div class="pdf-viewer">
+        <div class="pdf-toolbar">
+          <span id="fileToolbarLabel"><i class="fas fa-file-pdf" style="color:var(--accent);margin-right:8px;"></i> Resume</span>
+          <a id="resumeDownloadBtn" href="resume.pdf" download class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
+        </div>
+        <iframe id="pdfIframe" src="resume.pdf" title="Resume PDF"></iframe>
+      </div> -->
+
+      <!-- Resume Upload (update without code change) -->
+      <div class="upload-box">
+        <label><i class="fas fa-upload" style="color:var(--accent);"></i> Update Resume (PDF):</label>
+        <input type="file" accept=".pdf" id="resumeUpload" onchange="uploadResume()" />
+        <span class="upload-status" id="resumeStatus">Current: resume.pdf</span>
+      </div>
+
+      <div class="btn-group" style="margin-top:0.8rem;"> 
+            <a href="resume.pdf" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Resume</a>
+      </div>  
+
+      <!-- PDF Viewer 
+      <div class="pdf-viewer">
+        <div class="pdf-toolbar">
+          <span id="fileToolbarLabel"><i class="fas fa-file-pdf" style="color:var(--accent);margin-right:8px;"></i> Certificate</span>
+          <a id="certificateDownloadBtn" href="certificate.pdf" download class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
+        </div>
+        <iframe id="pdfIframe" src="certificate.pdf" title="Certificate PDF"></iframe>
+      </div> -->
+       
+
+      
+ 
+      <!-- Certificate Upload (update without code change) -->
+      <div class="upload-box">
+        <label><i class="fas fa-upload" style="color:var(--accent);"></i> Update Certificate (PDF):</label>
+        <input type="file" accept=".pdf" id="certificateUpload" onchange="uploadcertificate()" />
+        <span class="upload-status" id="certificateStatus">Current: certificate.pdf</span>
+      </div> 
+       
+      <div class="btn-group" style="margin-top:0.8rem;">
+            <a href="certificate internship.pdf" target="_blank" class="btn btn-primary btn-small"><i class="fas fa-file-pdf"></i> Certificate</a>
+          </div>  
+
+      <!-- PPT Upload (general) 
+      <div class="upload-box" style="margin-top:0.5rem;">
+        <label><i class="fas fa-file-powerpoint" style="color:var(--accent);"></i> Upload PPT (any):</label>
+        <input type="file" accept=".ppt,.pptx" id="pptGeneralUpload" onchange="uploadGeneralPPT()" />
+        <span class="upload-status" id="pptGeneralStatus">No PPT uploaded</span>
+      </div>
+      <div id="pptGeneralPreview" class="ppt-preview">
+        <i class="fas fa-file-powerpoint"></i>
+        <p style="color:var(--text-secondary);margin-bottom:0.6rem;">PPT uploaded! Click to download.</p>
+        <a id="pptGeneralDownload" href="#" download class="btn btn-success btn-small"><i class="fas fa-download"></i> Download PPT</a>
+      </div>    -->
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="animate delay-3">
+      <div class="section-title">
+        <i class="fas fa-address-card"></i> Contact
+        <span class="line"></span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <span><i class="fas fa-envelope"></i> <a href="mailto:harishankarmandal657@gmail.com">harishankarmandal657@gmail.com</a></span>
+          <span><i class="fas fa-phone-alt"></i> <a href="tel:+917461948760">7461948760</a></span>
+          <span><i class="fas fa-map-marker-alt"></i> Deoghar, Jharkhand</span>
+        </div>
+        <div class="social-links">
+          <a href="https://linkedin.com/in/your-profile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/yourhandle" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div style="margin-top:0.8rem;padding:0.8rem 1.2rem;background:var(--bg-card);border-radius:var(--radius-sm);border:1px solid var(--border-color);font-size:0.85rem;color:var(--text-secondary);">
+        <i class="fas fa-map-pin" style="color:var(--accent);margin-right:8px;"></i>
+        Vill‑Darwe, Post‑Jagadishpur, Block‑Madhupur, Dist‑Deoghar, Jharkhand – 815353
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-bottom">
+      © 2026 Harishankar Mandal · Built with <i class="fas fa-heart" style="color:var(--accent);font-size:0.7rem;"></i> using React &amp; Node.js
+    </footer>
+
+  </div>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    // ========================
+    // 1. HAMBURGER
+    // ========================
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ========================
+    // 2. SMOOTH SCROLL
+    // ========================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ========================
+    // 3. INTERSECTION OBSERVER (animations)
+    // ========================
+    const animatedElements = document.querySelectorAll('.animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animatedElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(el);
+    });
+
+    // ========================
+    // 4. RESUME UPLOAD (update without code change)
+    // ========================
+    function uploadResume() {
+      const input = document.getElementById('resumeUpload');
+      const iframe = document.getElementById('pdfIframe');
+      const toolbarSpan = document.getElementById('fileToolbarLabel');
+      const downloadBtn = document.getElementById('resumeDownloadBtn');
+      const status = document.getElementById('resumeStatus');
+
+      if (!input.files || !input.files[0]) {
+        alert('Please select a PDF file.');
+        return;
+      }
+
+      const file = input.files[0];
+      if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please upload a valid PDF file.');
+        return;
+      }
+
+      const url = URL.createObjectURL(file);
+      iframe.src = url;
+      toolbarSpan.innerHTML = `<i class="fas fa-file-pdf" style="color:var(--accent);margin-right:8px;"></i> ${file.name}`;
+      downloadBtn.href = url;
+      downloadBtn.download = file.name;
+      status.textContent = `✅ Uploaded: ${file.name}`;
+      status.className = 'upload-status success';
+
+      // Store in localStorage
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          localStorage.setItem('resumeData', e.target.result);
+          localStorage.setItem('resumeName', file.name);
+        } catch (err) {
+          // File too large for localStorage, just show message
+          console.log('File too large for localStorage, but viewer works.');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ========================
+    // 5. PROJECT PPT UPLOAD (per project)
+    // ========================
+    function uploadProjectPPT(projectId) {
+      const input = document.getElementById(`pptUpload${projectId}`);
+      const previewDiv = document.getElementById(`pptPreview${projectId}`);
+      const downloadLink = document.getElementById(`pptDownload${projectId}`);
+      const status = document.getElementById(`pptStatus${projectId}`);
+
+      if (!input.files || !input.files[0]) {
+        alert('Please select a PPT file.');
+        return;
+      }
+
+      const file = input.files[0];
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (!['ppt', 'pptx'].includes(ext)) {
+        alert('Please upload a valid PPT or PPTX file.');
+        return;
+      }
+
+      const url = URL.createObjectURL(file);
+      previewDiv.style.display = 'block';
+      downloadLink.href = url;
+      downloadLink.download = file.name;
+      status.textContent = `✅ ${file.name}`;
+      status.className = 'upload-status success';
+
+      // Store in localStorage
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          localStorage.setItem(`ppt_project_${projectId}`, e.target.result);
+          localStorage.setItem(`ppt_project_${projectId}_name`, file.name);
+        } catch (err) {
+          console.log('File too large for localStorage.');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ========================
+    // 6. GENERAL PPT UPLOAD
+    // ========================
+    function uploadGeneralPPT() {
+      const input = document.getElementById('pptGeneralUpload');
+      const previewDiv = document.getElementById('pptGeneralPreview');
+      const downloadLink = document.getElementById('pptGeneralDownload');
+      const status = document.getElementById('pptGeneralStatus');
+
+      if (!input.files || !input.files[0]) {
+        alert('Please select a PPT file.');
+        return;
+      }
+
+      const file = input.files[0];
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (!['ppt', 'pptx'].includes(ext)) {
+        alert('Please upload a valid PPT or PPTX file.');
+        return;
+      }
+
+      const url = URL.createObjectURL(file);
+      previewDiv.style.display = 'block';
+      downloadLink.href = url;
+      downloadLink.download = file.name;
+      status.textContent = `✅ ${file.name}`;
+      status.className = 'upload-status success';
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          localStorage.setItem('ppt_general', e.target.result);
+          localStorage.setItem('ppt_general_name', file.name);
+        } catch (err) {
+          console.log('File too large for localStorage.');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ========================
+    // 7. RESTORE FROM localStorage (on page load)
+    // ========================
+    window.addEventListener('DOMContentLoaded', function() {
+      // Restore Resume
+      const resumeData = localStorage.getItem('resumeData');
+      const resumeName = localStorage.getItem('resumeName');
+      if (resumeData && resumeName) {
+        const iframe = document.getElementById('pdfIframe');
+        const toolbarSpan = document.getElementById('fileToolbarLabel');
+        const downloadBtn = document.getElementById('resumeDownloadBtn');
+        const status = document.getElementById('resumeStatus');
+        iframe.src = resumeData;
+        toolbarSpan.innerHTML = `<i class="fas fa-file-pdf" style="color:var(--accent);margin-right:8px;"></i> ${resumeName}`;
+        downloadBtn.href = resumeData;
+        downloadBtn.download = resumeName;
+        status.textContent = `✅ ${resumeName}`;
+        status.className = 'upload-status success';
+      }
+
+      // Restore Project PPTs
+      for (let i = 1; i <= 2; i++) {
+        const pptData = localStorage.getItem(`ppt_project_${i}`);
+        const pptName = localStorage.getItem(`ppt_project_${i}_name`);
+        if (pptData && pptName) {
+          const previewDiv = document.getElementById(`pptPreview${i}`);
+          const downloadLink = document.getElementById(`pptDownload${i}`);
+          const status = document.getElementById(`pptStatus${i}`);
+          previewDiv.style.display = 'block';
+          downloadLink.href = pptData;
+          downloadLink.download = pptName;
+          status.textContent = `✅ ${pptName}`;
+          status.className = 'upload-status success';
+        }
+      }
+
+      // Restore General PPT
+      const generalPPT = localStorage.getItem('ppt_general');
+      const generalPPTName = localStorage.getItem('ppt_general_name');
+      if (generalPPT && generalPPTName) {
+        const previewDiv = document.getElementById('pptGeneralPreview');
+        const downloadLink = document.getElementById('pptGeneralDownload');
+        const status = document.getElementById('pptGeneralStatus');
+        previewDiv.style.display = 'block';
+        downloadLink.href = generalPPT;
+        downloadLink.download = generalPPTName;
+        status.textContent = `✅ ${generalPPTName}`;
+        status.className = 'upload-status success';
+      }
+    });
+
+    // ========================
+    // 8. SOCIAL LINKS (update these)
+    // ========================
+    document.querySelector('.social-links a[title="LinkedIn"]')?.setAttribute('href', 'https://linkedin.com/in/your-profile');
+    document.querySelector('.social-links a[title="GitHub"]')?.setAttribute('href', 'https://github.com/yourusername');
+    document.querySelector('.social-links a[title="Twitter"]')?.setAttribute('href', 'https://twitter.com/yourhandle');
+  </script>
+
+</body>
+</html> 
